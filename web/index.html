@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9msnPQit2WBsSXQLTYhp_xF2e3Y3trTg&callback=initMap"
+    async defer></script>
 	<style type="text/css">
 		.row {
 			padding-top:1.5em;
 		}
 	</style>
+	<style type="text/css">
+      html, body { height: 100%;}
+      #map { height: 50%; }
+    </style>
 	<script>
 		var openWeatherAppId = 'ca147896cad69f2c6e786ee7177c9882',
 		  openWeatherUrl = 'http://api.openweathermap.org/data/2.5/forecast'
+
+		  var map;
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -25.363, lng: 131.044},
+            zoom: 3
+          });
+
+        }
+        function setMarker(lat,lon){
+          	  var myLatLng = {lat: lat, lng: lon};
+	          var marker = new google.maps.Marker({
+	          map: map,
+	          position: myLatLng,
+	          title: 'Marcador!'
+	        });
+	          map.setCenter(myLatLng)
+          }
 		var prepareData = function(units) {
 			// Replace loading image
 			var cityName = $('#city-name').val()
@@ -49,14 +74,30 @@
 			  cityName = forecast.city.name,
 				country = forecast.city.country
 			html += '<h3> Weather Forecast for ' + cityName + ', ' + country + '</h3>'
+
 			forecast.list.forEach(function(forecastEntry, index, list){
 				html += '<p>' + forecastEntry.dt_txt + ': ' + forecastEntry.main.temp + '</p>'
 			})
+
+
+			var lat = forecast.city.coord.lat
+			var lon = forecast.city.coord.lon
+
+			setMarker(lat,lon)
+
 			$('#log').html(html)
 		}
+		
+
 	</script>
+	    <script type="text/javascript">
+
+        
+    </script>
+
 </head>
 <body>
+	<div id="map"></div>
 	<div class="container">
 
 		<div class="row">
@@ -69,8 +110,8 @@
 
 		</div>
 		<div class="row">
-			<div class="span6 offset1"><input type="button" class="btn-primary btn btn-metric" value="Get forecast in metric"/>
-			<div class="span6 offset1"><input type="button" class="btn-danger btn btn-imperial" value="Get forecast in imperial"/>
+			<div class="span6 "><input type="button" class="btn-primary btn btn-metric" value="Celsius"/>
+			<div class="span6 "><input type="button" class="btn-danger btn btn-imperial" value="Fahrenheit"/>
 			</div>			
 		</div>
 
