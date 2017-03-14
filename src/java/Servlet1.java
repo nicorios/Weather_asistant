@@ -58,7 +58,7 @@ public class Servlet1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**
@@ -73,9 +73,6 @@ public class Servlet1 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String ciudad = request.getParameter("city_name");
-        
-        Weather clima = new Weather();
-        clima.consulta();
         
         
         

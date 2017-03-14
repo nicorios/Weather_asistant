@@ -16,22 +16,51 @@ import org.json.JSONException;
  * @author Envy
  */
 public class Weather {
+        
     
-     public static void consulta()
-            throws IOException, MalformedURLException, JSONException {
+        private double weatherC;
+        private double weatherF;
+        private double lat;
+        private double lon;
 
-        // declaring object of "OpenWeatherMap" class
-        OpenWeatherMap owm = new OpenWeatherMap("");
+    public double getWeatherC() {
+        return weatherC;
+    }
 
-        // getting current weather data for the "London" city
-        CurrentWeather cwd = owm.currentWeatherByCityName("London");
+    public void setWeatherC(double weatherC) {
+        this.weatherC = weatherC;
+    }
 
-        //printing city name from the retrieved data
-        System.out.println("City: " + cwd.getCityName());
+    public double getWeatherF() {
+        return weatherF;
+    }
 
-        // printing the max./min. temperature
-        System.out.println("Temperature: " + cwd.getMainInstance().getMaxTemperature()
-                            + "/" + cwd.getMainInstance().getMinTemperature() + "\'F");
+    public void setWeatherF(double weatherF) {
+        this.weatherF = weatherF;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
+    @Override
+    public String toString() {
+        return "Weather{" + "weatherC=" + weatherC + ", weatherF=" + weatherF + ", lat=" + lat + ", lon=" + lon + '}';
+    }
+        
+        
     }
     
-}
+
