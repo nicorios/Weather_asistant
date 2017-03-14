@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Weather</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+</head>
+<body>
+	
+
+	<div class="row">
+        <div class="col s12 m6">
+          <div class="card lime darken-4">
+            <div class="card-content white-text">
+              <span class="card-title">Weather Assistant</span>
+              <p>Ingrese el nombre de su ciudad aqui.</p>
+              <div class="row">
+				    <form class="col s12">
+				      <div class="row">
+				        <div class="input-field col s12">
+				          <input id="city_name" type="text">
+				        </div>
+				    </form>
+				  </div>
+            </div>
+            <div class="card-action">
+              <a href="#">Consultar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+            
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+	
+</body>
 </html>
